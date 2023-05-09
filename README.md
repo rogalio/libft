@@ -31,3 +31,7 @@ Une bibliothèque de fonctions en C couvrant les listes chaînées, fonctions de
       free(str);
       return 0;
     }
+### Contributions et support :raising_hand:
+    N'hésitez pas à soumettre des issues et des pull requests si vous trouvez des erreurs ou si vous avez des suggestions d'amélioration. Toute contribution est la bienvenue! :smiley:
+
+Bonne utilisation de Libft! :heart:
