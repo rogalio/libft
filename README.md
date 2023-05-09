@@ -21,7 +21,6 @@ Une bibliothèque de fonctions en C couvrant les listes chaînées, fonctions de
     bonus : compile la bibliothèque avec des fonctions supplémentaires (bonus)
 ### Exemple d'utilisation :bulb:
     Incluez simplement l'en-tête libft.h dans votre projet et liez la bibliothèque libft.a lors de la compilation.
-
     
     #include "libft.h"
 
