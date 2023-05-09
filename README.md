@@ -22,8 +22,7 @@ Une bibliothèque de fonctions en C couvrant les listes chaînées, fonctions de
 ### Exemple d'utilisation :bulb:
     Incluez simplement l'en-tête libft.h dans votre projet et liez la bibliothèque libft.a lors de la compilation.
 
-    ```c
-
+    
     #include "libft.h"
 
     int main()
@@ -33,5 +32,3 @@ Une bibliothèque de fonctions en C couvrant les listes chaînées, fonctions de
       free(str);
       return 0;
     }
-    ```
-
