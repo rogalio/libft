@@ -6,13 +6,11 @@
 /*   By: rmouchel <rmouchel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:43:02 by rmouchel          #+#    #+#             */
-/*   Updated: 2023/05/09 19:34:46 by rmouchel         ###   ########.fr       */
+/*   Updated: 2023/05/09 20:39:19 by rmouchel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
-
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
@@ -24,15 +22,16 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	if (ptr_dest > ptr_src)
 	{
 		while (n > 0)
-        {
-            n--;
+		{
+			n--;
 			ptr_dest[n] = ptr_src[n];
-        }
+		}
 	}
 	else
 		ft_memcpy(dest, src, n);
 	return (dest);
 }
+
 
 /**
  * @file
