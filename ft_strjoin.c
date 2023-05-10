@@ -28,9 +28,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (str);
 }
 
-
-
-
 /**
  * @file
  * @brief      Concatène deux chaînes de caractères en une seule chaîne de caractères.
