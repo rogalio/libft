@@ -12,14 +12,15 @@
 
 #include "libft.h"
 
-
-
 void	*ft_calloc(size_t nitems, size_t size)
 {
 	char	*ptr;
 
 	if (nitems == 0 || size == 0)
-		return (NULL);
+	{
+		nitems = 1;
+		size = 1;
+	}
 	if (nitems > SIZE_MAX / size)
 		return (NULL);
 	ptr = malloc(nitems * size);
@@ -39,8 +40,8 @@ void	*ft_calloc(size_t nitems, size_t size)
  * @return     Pointeur vers l'espace mémoire alloué et initialisé à zéro, ou NULL si l'allocation échoue ou provoque un débordement de size_t.
  *
  * @details    La fonction ft_calloc procède comme suit :
- *             1. Vérifie si nitems ou size sont égaux à zéro et retourne NULL si c'est le cas.
- *             2. Vérifie si l'allocation provoque un débordement de size_t en comparant nitems et SIZE_MAX. Si un débordement est détecté, retourne NULL.
+ *             1. Si nitems ou size est égal à zéro, les remplace par 1 pour garantir l'allocation de mémoire.
+ *             2. Vérifie si l'allocation provoque un débordement de size_t en comparant nitems et SIZE_MAX / size. Si un débordement est détecté, retourne NULL.
  *             3. Alloue un espace mémoire suffisant pour contenir `nitems` éléments de taille `size`.
  *             4. Vérifie si l'allocation a réussi. Si ce n'est pas le cas, retourne NULL.
  *             5. Initialise l'espace mémoire alloué à zéro en utilisant la fonction `ft_memset`.
