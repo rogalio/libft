@@ -16,30 +16,22 @@ size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t dstsize)
 {
 	size_t	i;
 	size_t	j;
-	size_t	len_src;
-	size_t	len_dst;
+	size_t	dst_len;
+	size_t	src_len;
 
-	len_src = 0;
-	while (src[len_src])
-		len_src++;
-	if (dstsize == 0)
-		return (len_src);
 	i = 0;
-	while (dst[i] && i < dstsize)
-		i++;
-	len_dst = i;
 	j = 0;
-	while (src[j] && i < dstsize - 1)
-	{
-		dst[i] = src[j];
-		++i;
-		++j;
-	}
-	if (len_dst < dstsize)
-		dst[i] = '\0';
-	return (len_dst + len_src);
+	dst_len = ft_strlen(dst);
+	src_len = ft_strlen(src);
+	if (dstsize == 0)
+		return (src_len);
+	if (dstsize < dst_len)
+		return (src_len + dstsize);
+	while (dst[i])
+		i++;
+	ft_strlcpy(dst + i, src, dstsize - dst_len);
+	return (dst_len + src_len);
 }
-
 
 /**
  * @file
@@ -52,9 +44,8 @@ size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t dstsize)
  * @return     La longueur totale de la chaîne qui aurait été créée si la taille maximale de destination avait été suffisante, sans tenir compte du caractère nul de fin.
  *
  * @details    La fonction ft_strlcat procède comme suit :
- *             1. Calcule la longueur totale de la chaîne de caractères source en utilisant une boucle while.
- *             2. Parcourt la chaîne de caractères de destination en utilisant une boucle while pour trouver sa longueur actuelle.
- *             3. Concatène les caractères de la chaîne de caractères source dans la chaîne de caractères de destination jusqu'à ce que la taille maximale autorisée soit atteinte ou que la fin de la chaîne de caractères source soit atteinte.
- *             4. Insère un caractère nul de fin à la fin de la chaîne de caractères de destination, si la longueur de la chaîne de destination est inférieure à la taille maximale autorisée.
- *             5. Retourne la longueur totale de la chaîne qui aurait été créée si la taille maximale de destination avait été suffisante, sans tenir compte du caractère nul de fin.
+ *             1. Calcule la longueur totale de la chaîne de caractères source et de la chaîne de destination.
+ *             2. Vérifie si la taille maximale autorisée pour la chaîne de destination est inférieure à la longueur de la chaîne de destination. Si c'est le cas, retourne la longueur de la chaîne source plus la taille maximale autorisée pour la chaîne de destination.
+ *             3. Utilise ft_strlcpy pour copier la chaîne de caractères source à la fin de la chaîne de caractères de destination, en prenant soin de ne pas dépasser la taille maximale autorisée pour la chaîne de destination.
+ *             4. Retourne la longueur totale de la chaîne qui aurait été créée si la taille maximale de destination avait été suffisante, sans tenir compte du caractère nul de fin.
  */
