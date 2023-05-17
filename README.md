@@ -1,5 +1,5 @@
 <h1 align="center">
-	42cursus' libft
+libft
 </h1>
 
 ### Functions from `<ctype.h>` library
