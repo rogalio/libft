@@ -12,53 +12,61 @@
 
 #include "libft.h"
 
-static size_t	count_words(char const *s, char c)
+static int	count_words(char *str, char c)
 {
-	size_t	i;
-	size_t	nb_words;
+    int i;
+    int num_words;
 
-	i = 0;
-	nb_words = 0;
-	while (s[i])
-	{
-		while (s[i] == c)
-			i++;
-		if (s[i])
-			nb_words++;
-		while (s[i] && s[i] != c)
-			i++;
-	}
-	return (nb_words);
+    i = 0;
+    num_words = 0;
+    while (str[i])
+    {
+        if (str[i] != c)
+        {
+            num_words++;
+            while (str[i] && str[i] != c)
+                i++;
+        }
+        else
+            i++;
+    }
+    return (num_words);
 }
 
-char	**ft_split(char const *s, char c)
+char **ft_split(char const *s, char c)
 {
- 	char	**tab;
-	size_t	i;
-	size_t	j;
-	size_t	k;
+    char **arr;
+    int i;
+    int j;
+    int k;
 
-	if (!s)
-		return (NULL);
-	tab = malloc(sizeof(char *) * (count_words(s, c) + 1));
-	if (!tab)
-		return (NULL);
-	i = 0;
-	j = 0;
-	while (s[i])
-	{
-		while (s[i] == c)
-			i++;
-		k = i;
-		while (s[i] && s[i] != c)
-			i++;
-		if (i > k)
-			tab[j++] = ft_substr(s, k, i - k);
-	}
-	tab[j] = NULL;
-	return (tab);
+    arr = (char **)malloc(sizeof(char *) * (count_words((char *)s, c) + 1));
+    if (!arr)
+        return (NULL);
+    i = 0;
+    j = 0;
+    while (s[i])
+    {
+        if (s[i] != c)
+        {
+            k = 0;
+            while (s[i + k] && s[i + k] != c)
+                k++;
+            arr[j] = (char *)malloc(sizeof(char) * (k + 1));
+            if (!arr[j])
+                return (NULL);
+            k = 0;
+            while (s[i] && s[i] != c)
+                arr[j][k++] = s[i++];
+            arr[j][k] = '\0';
+            j++;
+        }
+        else
+            i++;
+    }
+    arr[j] = NULL;
+    return (arr);
 }
-
 /**
  * @file
  * @brief      Sépare une chaîne de caractères en fonction d'un caractère délimiteur et retourne un tableau de chaînes de caractères.
